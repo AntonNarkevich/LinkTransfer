@@ -1,0 +1,45 @@
+.link-board {
+	margin-bottom: 30px;
+}
+
+/*	CONTROLS BAR	*/
+.phone-meun-button {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.controls-bar {
+	margin-bottom: 20px;
+}
+
+/*	BOARD	*/
+.board-name {
+	font-weight: bold;
+}
+
+/*Board body*/
+.link {
+	display: block;
+}
+
+.remove-link-td {
+	width: 30px;
+}
+
+/*Board footer*/
+.add-button,
+.ask-button {
+	width: 100%;
+}
+
+/*	ADD LINK PAGE	*/
+.add-link-button {
+	display: block;
+}
+
+
+
+/*	MOBILE STYLES	*/
+@media (max-width: 420px) {
+
+}
