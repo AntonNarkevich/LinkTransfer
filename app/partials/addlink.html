@@ -1,11 +1,10 @@
-<h3>Adding to MyBoard</h3>
+<h3>Adding to "{{board.name}}"</h3>
 <form>
 	<label for="link-text">Link name</label>
-	<input id="link-text" type="text"/>
+	<input id="link-text" type="text" data-ng-model="newLink.name"/>
 
 	<label for="link-text">Address</label>
-	<textarea id="link-href" type=""></textarea>
+	<textarea id="link-href" data-ng-model="newLink.href"></textarea>
 
-	<button type="submit" class="add-link-button btn btn-info">Add it</button>
-
+	<button type="submit" class="add-link-button btn btn-info" data-ng-click="addLink()">Add it</button>
 </form>

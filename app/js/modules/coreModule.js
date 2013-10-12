@@ -36,12 +36,26 @@ coreModule.controller('boardController', ['$scope', 'boardRepository', function 
 }]);
 
 //Adding links
-coreModule.controller('addLinkController', ['$scope', 'boardRepository', function($scope, boardRepository) {
+coreModule.controller('addLinkController', ['$scope', '$routeParams', 'boardRepository', function ($scope, $routeParams, boardRepository) {
+	var board = boardRepository.getBoard($routeParams.boardId);
 
+	$scope.board = board;
+
+	$scope.addLink = function() {
+		board.links.push({
+			name: $scope.newLink.name,
+			href: $scope.newLink.href
+		})
+	}
 }]);
 
 //Settings
-coreModule.controller('settingsController', ['$scope', function() {
+coreModule.controller('settingsController', ['$scope', function () {
+
+}]);
+
+//Membership. Login/Logout
+coreModule.controller('loginController', ['$scope', function () {
 
 }]);
 
@@ -49,7 +63,8 @@ coreModule.controller('settingsController', ['$scope', function() {
 //Routing configuration
 coreModule.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider.when('/boards', {templateUrl: 'partials/boards.html', controller: 'boardController'})
-		.when('/addlink', {templateUrl: 'partials/addlink.html', controller: 'addLinkController'})
+		.when('/addlink/:boardId', {templateUrl: 'partials/addlink.html', controller: 'addLinkController'})
 		.when('/settings', {templateUrl: 'partials/settings.html', controller: 'settingsController'})
+		.when('/login', {templateUrl: 'partials/login.html', controller: 'loginController'})
 		.otherwise({redirectTo: '/boards'});
 }]);
