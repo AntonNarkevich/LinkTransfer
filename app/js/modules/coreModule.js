@@ -23,9 +23,11 @@ coreModule.controller('masterController', ['$scope', 'membershipService', functi
 coreModule.controller('boardController', ['$scope', 'boardRepository', function ($scope, boardRepository) {
 	//[1,1,1,1,1,1] => [[1,1],[1,1],[1,1]]
 	var chunks = function (array, size) {
-		var results = [];
-		while (array.length) {
-			results.push(array.splice(0, size));
+		var arrayClone = array.slice(0),
+			results = [];
+
+		while (arrayClone.length) {
+			results.push(arrayClone.splice(0, size));
 		}
 		return results;
 	};
@@ -41,11 +43,11 @@ coreModule.controller('addLinkController', ['$scope', '$routeParams', 'boardRepo
 
 	$scope.board = board;
 
-	$scope.addLink = function() {
-		board.links.push({
-			name: $scope.newLink.name,
-			href: $scope.newLink.href
-		})
+	$scope.addLink = function () {
+		var link = new Link($scope.newLink.name, $scope.newLink.href, board.id);
+
+		board.addLink(link);
+		boardRepository.createLink(link);
 	}
 }]);
 
